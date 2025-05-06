@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content%}
+<main>
+  <section>
+    <form method="POST" novalidate>
+      {{ form.csrf_token }}
+      <div>
+        <div>
+          {{ form.name(placeholder=form.name.label.text) }}
+            <p><span style="color:red">
+              {% for error in form.name.errors %}
+                {{ error }}
+              {% endfor %}
+            </span></p>
+          </div>
+        <div>
+          {{ form.description(placeholder=form.description.label.text) }}
+            <p><span style="color:red">
+              {% for error in form.description.errors %}
+                {{ error }} 
+              {% endfor %}
+            </span></p>
+          {{ form.submit }}
+        </div>
+      </div>
+    </form>
+  </section>
+</main>
+{% endblock content %}
